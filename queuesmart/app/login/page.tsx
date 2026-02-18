@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -22,10 +23,12 @@ export default function LoginPage() {
     return Object.keys(newErrors).length === 0;
   };
 
+  const router = useRouter();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
-      alert("Login successful (mock)");
+      alert("Login successful");
+      router.push("/dashboard");
     }
   };
 
